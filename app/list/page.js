@@ -14,30 +14,15 @@ export default function List() {
     const [ isModalVisible, setIsModalVisible ] = useState(false);
     const [ message, setMessage ] = useState("");
     const [ 상품, set상품 ] = useState([
-        { id: 1, name: 'Tomatoes 1', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 2, name: 'Pasta 1', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 3, name: 'Coconut 1', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 4, name: 'Tomatoes 2', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 5, name: 'Pasta 2', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 6, name: 'Coconut 2', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 7, name: 'Tomatoes 3', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 8, name: 'Pasta 3', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 9, name: 'Coconut 3', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 10, name: 'Tomatoes 4', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 11, name: 'Pasta 4', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 12, name: 'Coconut 4', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 13, name: 'Tomatoes 5', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 14, name: 'Pasta 5', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 15, name: 'Coconut 5', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 16, name: 'Tomatoes 6', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 17, name: 'Pasta 6', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 18, name: 'Coconut 6', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 19, name: 'Tomatoes 7', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 20, name: 'Pasta 7', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 21, name: 'Coconut 7', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 22, name: 'Tomatoes 8', category:'vegitable', price: 4.4, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food0.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 23, name: 'Pasta 8', category:'foodstuffs', price: 2.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food1.png', isActive: false, isCarted: false, isChecked: true, },
-        { id: 24, name: 'Coconut 8', category:'fruit', price: 4.0, quantity: 1, img: 'https://codingapple-cdn.b-cdn.net/wp-content/uploads/2023/01/food2.png', isActive: false, isCarted: false, isChecked: true, },
+        { id: 1, name: '폼폼푸린 1', category:'figure', price: 4.4, quantity: 1, img: '/images/뽐뽐1.webp', isActive: false, isCarted: false, isChecked: true, },
+        { id: 2, name: '폼폼푸린 2', category:'figure', price: 3.4, quantity: 1, img: '/images/뽐뽐2.png', isActive: false, isCarted: false, isChecked: true, },
+        { id: 3, name: '폼폼푸린 3', category:'figure', price: 5.4, quantity: 1, img: '/images/뽐뽐3.png', isActive: false, isCarted: false, isChecked: true, },
+        { id: 4, name: '폼폼푸린 4', category:'figure', price: 13.5, quantity: 1, img: '/images/뽐뿌움짤.gif', isActive: false, isCarted: false, isChecked: true, },
+        { id: 5, name: '폼폼푸린 5', category:'figure', price: 2.4, quantity: 1, img: '/images/뽐뽐1.webp', isActive: false, isCarted: false, isChecked: true, },
+        { id: 6, name: '폼폼푸린 6', category:'figure', price: 1.4, quantity: 1, img: '/images/뽐뽐2.png', isActive: false, isCarted: false, isChecked: true, },
+        { id: 7, name: '폼폼푸린 7', category:'figure', price: 4.4, quantity: 1, img: '/images/뽐뽐3.png', isActive: false, isCarted: false, isChecked: true, },
+        { id: 8, name: '폼폼푸린 8', category:'figure', price: 5.4, quantity: 1, img: '/images/뽐뿌움짤.gif', isActive: false, isCarted: false, isChecked: true, },
+        
     ]);
 
     // userInfo가 바뀔 때마다 상품의 isActive 상태를 업데이트
@@ -162,9 +147,9 @@ export default function List() {
     
     const filteredProducts = 상품.filter(item => {
         if (listCategoryNum === 0) return true; // 모든 상품
-        if (listCategoryNum === 1) return item.category === 'foodstuffs'; // foodstuffs
-        if (listCategoryNum === 2) return item.category === 'fruit'; // vegitable
-        if (listCategoryNum === 3) return item.category === 'vegitable'; // fruit
+        if (listCategoryNum === 1) return item.category === 'figure'; // foodstuffs
+        // if (listCategoryNum === 2) return item.category === 'fruit'; // vegitable
+        // if (listCategoryNum === 3) return item.category === 'vegitable'; // fruit
         return true;
     });
 
@@ -216,7 +201,7 @@ export default function List() {
                         <Image
                             className="product-img"
                             src={product.img}
-                            width={500}
+                            width={400}
                             height={400}
                             alt={product.name}
                             priority

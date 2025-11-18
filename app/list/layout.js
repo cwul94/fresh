@@ -2,7 +2,6 @@
 
 import "../globals.css";
 import { useShareContext } from "@/context/ShareContext";
-import { useEffect } from "react";
 
 export default function ListLayout({ children }) {
 
@@ -47,14 +46,14 @@ function ListNav({ listCategoryNum, setListCategoryNum }) {
                     <p style={listCategoryNum == 0 ? { color: "cornflowerblue" } : { color: "black" }}>전체</p>
                 </div>
                 <div onClick={()=> listCategoryHandler(setListCategoryNum,1)}>
-                    <p style={listCategoryNum == 1 ? { color: "cornflowerblue" } : { color: "black" }}>식료품</p>
+                    <p style={listCategoryNum == 1 ? { color: "cornflowerblue" } : { color: "black" }}>피규어</p>
                 </div>
-                <div onClick={()=> listCategoryHandler(setListCategoryNum,2)}>
+                {/* <div onClick={()=> listCategoryHandler(setListCategoryNum,2)}>
                     <p style={listCategoryNum == 2 ? { color: "cornflowerblue" } : { color: "black" }}>과일</p>
                 </div>
                 <div onClick={()=> listCategoryHandler(setListCategoryNum,3)}>
                     <p style={listCategoryNum == 3 ? { color: "cornflowerblue" } : { color: "black" }}>야채</p>
-                </div>
+                </div> */}
             </div>
         </>
     )

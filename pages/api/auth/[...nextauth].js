@@ -7,7 +7,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
-import bcrypt from "bcrypt";
+import bcrypt, { compareSync } from "bcrypt";
 import client from "@/lib/redisClient";
 import jwt from "jsonwebtoken";
 
@@ -47,13 +47,13 @@ export const authOptions = {
       },
       async authorize(credentials) {
         console.log('authorize 진입!');
-
+      
         if(credentials.password) {
-
+          console.log('패스워드있음');
           const db = await getDatabaseConnection();
-          
+          //console.log(db);
           const [rows] = await db.query('SELECT user_id FROM users WHERE email = ?', [credentials.email]);
-          
+          //console.log(rows);
           if ( rows.length === 0 ) {
             throw new Error('존재하지않는 계정입니다.')
           }
@@ -63,6 +63,7 @@ export const authOptions = {
 
           const isMatch = await bcrypt.compare(credentials.password, user.password);
           db.release();
+          console.log('왜안댐');
           
           if ( !isMatch ) {
             throw new Error('비밀번호를 확인해주세요.')
