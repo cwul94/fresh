@@ -9,7 +9,6 @@ import Script from "next/script";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { RxExit } from "react-icons/rx";
 import { SessionProvider, signOut } from "next-auth/react";
-import Cookies from "js-cookie";
 
 export default function RootLayout({ children }) {
   
@@ -304,6 +303,7 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
   const handleAddressSearch = (event) => {
     event.preventDefault();
     setIsOpen(!isOpen);
+    console.log('맵로드');
     
     if ( !isOpen ) {
       setTimeout(() => {
@@ -311,14 +311,17 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
           oncomplete: function (data) {
             setIsSelected(true);
             setAddress(data.address);
+            console.log(address,data.address);
   
             // 지도 스크립트가 이미 로드된 경우 재사용
             if (!scriptLoaded) {
               loadKakaoMapScript(() => {
                 initializeMap(data.address);
+                console.log('이미 로드');
               });
             } else {
               initializeMap(data.address);
+              console.log('지도 로드');
             }
           },
           width: "100%",
@@ -330,6 +333,7 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
 
   // Kakao 지도 스크립트를 로드하는 함수
   const loadKakaoMapScript = (callback) => {
+    console.log('맵로드1');
     if (!scriptLoaded) {
       const script = document.createElement("script");
       script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}&libraries=services&autoload=false`;
@@ -349,11 +353,14 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
 
   // 지도를 초기화하는 함수
   const initializeMap = (address) => {
+    console.log('맵로드2');
+    console.log(window.kakao.maps);
     window.kakao.maps.load(() => {
       const geocoder = new window.kakao.maps.services.Geocoder();
 
       geocoder.addressSearch(address, (result, status) => {
         if (status === window.kakao.maps.services.Status.OK) {
+          console.log(status);
           const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
           // 지도 및 마커 초기화 또는 업데이트
@@ -381,6 +388,7 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
     ) {
       setIsOpen(false);
       setIsSelected(false);
+      console.log('작업중지');
     }
   };
 
@@ -418,7 +426,7 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
     }));
     localStorage.setItem('address', address);
     localStorage.setItem('address_details', details);
-    setMessage('주소가 저장되었습니다.');
+    setMessage('배송지가 변경되었습니다');
     setIsOpen(false);
     setIsSelected(false);
     setIsModal(true);
@@ -429,6 +437,7 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
           setIsModalVisible(false); // 상태를 false로 바꿔서 모달을 완전히 숨김
       }, 500); // 애니메이션 시간과 맞추기
     }, 1000); // n초(예: 3초)
+    console.log('주소저장완료');
   };
 
   const modalCancelHandler = () => {
@@ -464,15 +473,22 @@ function AddressSearch({ setIsModal, setIsModalVisible, setMessage }) {
                     placeholder="상세주소"
                     autoFocus
                   />
-                  <button type="submit">주소 저장</button>
+                  <button type="submit">배송지 변경</button>
                 </div>
               </form>
             </>
           )}
-          {!isSelected &&
+          {/* {!isSelected &&
             <div className="prev_address_detail">
               <label htmlFor="prev_address_detail">상세주소 : </label>
               <input type="text" id="prev_address_detail" value={userInfo?.userInfo?.address_detail || ''} readOnly/>
+            </div>
+          } */}
+          {!isSelected && userInfo?.userInfo?.address &&
+            <div className="pres_address_detail">
+              <label htmlFor="pres_address_detail">현재주소 : </label>
+              <input id="pres_address_detail" value={`${userInfo?.userInfo?.address || ''} ${userInfo?.userInfo?.address_detail || ''}`}
+              readOnly/>
             </div>
           }
           <button className="closeButton" onClick={modalCancelHandler}>

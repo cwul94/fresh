@@ -91,7 +91,7 @@ input:focus {
   top: 50px; /* 원하는 위치로 조정 */
   right: 140px;
   width: 500px; /* 원하는 크기로 조정 */
-  height: 490px; /* 원하는 크기로 조정 */
+  height: 500px; /* 원하는 크기로 조정 */
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   z-index: 1000; /* 다른 요소 위에 표시되도록 */
@@ -119,6 +119,28 @@ input:focus {
   border-radius: 5px;
   padding: 0px 10px 0px 10px;
 }
+.pres_address_detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  border-top: 1px solid black;
+  padding: 14px;
+}
+.pres_address_detail > label {
+  color: black;
+  font-size: 16px;
+}
+.pres_address_detail > input {
+  width: 345px;
+  height: 32px;
+  font-size: 15px;
+  border: 2px solid rgb(43, 101, 208);
+  border-radius: 5px;
+  padding: 0px 10px 0px 10px;
+}
+
 .addressLayer {
   flex: 1;
   /* Kakao 주소 검색 창이 표시될 공간 */
