@@ -169,7 +169,7 @@ function Navbar({ setIsModal, setIsModalVisible, setMessage, setIsVisible }) {
     handleRouteChange();
     window.addEventListener("popstate", handleRouteChange);
 
-    return () => {
+    return () => { 
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("popstate", handleRouteChange);
     };
