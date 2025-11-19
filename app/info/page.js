@@ -165,6 +165,7 @@ export default function Info() {
             order: [],
         };
         setUserInfo(updatedUserInfo);
+        updateUserInDB(updatedUserInfo,router);
     };
     const keyPressHandler = (e) =>{
         if(e.key == 'Enter') checkCredentials();
@@ -223,6 +224,9 @@ export default function Info() {
             if (response.ok) {
                 alert('비밀번호가 변경되었습니다! 변경된 비밀번호로 다시 로그인 해주세요!');
                 updateUserInDB(userInfo,router);
+                signOut({ redirect:false }).then(()=>{
+                  router.push('/');
+                })
             } else {
                 alert('이전의 비밀번호는 사용하실 수 없습니다.\n새로운 비밀번호를 설정해주세요.')
             }
@@ -376,14 +380,15 @@ async function updateUserInDB(userInfo,router) {
           details: userInfo?.userInfo?.address_detail,
           cart: userInfo?.cart,
           interest: userInfo?.jjim,
+          order: userInfo?.order,
         }),
       });
   
       if (response.ok) {
         console.log('User information successfully updated in the database');
-        signOut({ redirect:false }).then(()=>{
-          router.push('/');
-        })
+        // signOut({ redirect:false }).then(()=>{
+        //   router.push('/');
+        // })
       } else {
         console.error('Failed to update user information in the database');
       }
