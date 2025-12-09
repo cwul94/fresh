@@ -63,7 +63,6 @@ export const authOptions = {
 
           const isMatch = await bcrypt.compare(credentials.password, user.password);
           db.release();
-          console.log('왜안댐');
           
           if ( !isMatch ) {
             throw new Error('비밀번호를 확인해주세요.')

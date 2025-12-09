@@ -130,9 +130,15 @@ export default function Jjim() {
                     cart_isChked: true,
                 }; // 선택한 수량으로 업데이트된 상품
                 const updatedCart = [...userInfo?.cart, updatedProduct];
+
+                // 해당 찜목록 삭제
+                // const updatedJjim = userInfo.jjim.filter(
+                //     (item) => item.jjim_name !== product.intrst_name
+                // ); 
                 const updatedUserInfo = {
                     ...userInfo,
                     cart: updatedCart,
+                    // jjim: updatedJjim,
                 };
                 setUserInfo(updatedUserInfo);
                 setMessage('선택한 상품이 장바구니에 담겼어요!');
