@@ -75,8 +75,8 @@ async function updateUserDataWithRetry(db, id, userId, address, details, connect
         if (orders && Array.isArray(orders) && orders.length !== 0) {
           for (const order of orders) {
             await db.query(
-              'INSERT INTO orders (user_id, order_name, order_category, order_price, order_img) VALUES (?, ?, ?, ?, ?)',
-              [userId, order.order_name, order.order_category, order.order_price, order.order_img]
+              'INSERT INTO orders (user_id, order_name, order_category, order_price, order_quantity, order_img) VALUES (?, ?, ?, ?, ?, ?)',
+              [userId, order.order_name, order.order_category, order.order_price, order.order_quantity, order.order_img]
             );
           }
         }
