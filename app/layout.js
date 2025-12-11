@@ -253,6 +253,7 @@ async function updateUserInDB(userInfo,router) {
         details: userInfo?.userInfo?.address_detail,
         cart: userInfo?.cart,
         interest: userInfo?.jjim,
+        order: userInfo?.order,
       }),
     });
 

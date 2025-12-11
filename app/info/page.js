@@ -395,4 +395,4 @@ async function updateUserInDB(userInfo,router) {
     } catch (error) {
       console.error('Error during API request:', error);
     }
-  }
+}

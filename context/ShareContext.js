@@ -32,6 +32,16 @@ export function MyProvider({ children }) {
   const router = useRouter();
   const pathname = usePathname();
 
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+  const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+  const localDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
   const { data:session, status } = useSession();
 
   // useEffect(() => {
@@ -265,6 +275,7 @@ export function MyProvider({ children }) {
       pathname,
       session,
       status,
+      localDateTime,
     }}>
       {children}
       {isModal && (
