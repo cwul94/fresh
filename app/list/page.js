@@ -63,7 +63,10 @@ export default function List() {
             const isExisting = userInfo?.cart.find(item => item.cart_name === product.name);
             if (isExisting) {
                 setMessage('이미 장바구니에 있어요~');
-            } else {
+            } else if (!Number.isInteger(quantity)) {
+                setMessage('숫자만 입력 가능합니다..!');
+            }
+            else {
                 const updatedProduct = { 
                     cart_name: product.name,
                     cart_price: product.price,
